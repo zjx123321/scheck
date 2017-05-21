@@ -1,4 +1,4 @@
-package service;
+package com.simple.scheck.service;
 
 import org.springframework.stereotype.Service;
 
