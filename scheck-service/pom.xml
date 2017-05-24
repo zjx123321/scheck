@@ -11,6 +11,8 @@
 
     <artifactId>service</artifactId>
 
+    <packaging>jar</packaging>
+
     <dependencies>
         <dependency>
             <groupId>com.zjx</groupId>

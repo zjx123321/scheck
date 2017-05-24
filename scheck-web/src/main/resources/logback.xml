@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+    <property name="APP_LOGGING_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %level %logger{64}\\(%F:%L\\): %msg%n"/>
+    <!-- %m输出的信息,%p日志级别,%t线程名,%d日期,%c类的全名,,,, -->
+    <appender name="APP_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${APP_LOGGING_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="baselog"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>log/base.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/base.log.%d.%i</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy  class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- or whenever the file size reaches 64 MB -->
+                <maxFileSize>64MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>
+                ${APP_LOGGING_PATTERN}
+            </pattern>
+            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="baselog" />
+        <appender-ref ref="APP_STDOUT"/>
+    </root>
+    <!--<logger name="com.simple.scheck" level="INFO">-->
+        <!--<appender-ref ref="baselog" />-->
+        <!--<appender-ref ref="APP_STDOUT"/>-->
+    <!--</logger>-->
+</configuration>
