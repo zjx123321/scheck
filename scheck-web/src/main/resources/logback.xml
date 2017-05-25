@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="true">
+<configuration>
 
     <property name="APP_LOGGING_PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %level %logger{64}\\(%F:%L\\): %msg%n"/>
