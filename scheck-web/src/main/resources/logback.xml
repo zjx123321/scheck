@@ -30,11 +30,20 @@
     </appender>
 
     <root level="INFO">
-        <appender-ref ref="baselog" />
+        <!--<appender-ref ref="baselog" />-->
         <appender-ref ref="APP_STDOUT"/>
     </root>
-    <!--<logger name="com.simple.scheck" level="INFO">-->
-        <!--<appender-ref ref="baselog" />-->
-        <!--<appender-ref ref="APP_STDOUT"/>-->
-    <!--</logger>-->
+
+    <logger name="org.apache.ibatis" level="INFO">
+        <appender-ref ref="APP_STDOUT"/>
+    </logger>
+    <logger name="java.sql" level="INFO">
+        <appender-ref ref="APP_STDOUT"/>
+    </logger>
+
+    <logger name="com.github.pagehelper" level="INFO">
+        <appender-ref ref="baselog" />
+        <appender-ref ref="APP_STDOUT"/>
+    </logger>
+
 </configuration>

@@ -1,7 +1,9 @@
 package com.simple.scheck.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.simple.scheck.dto.entity.User;
 import com.simple.scheck.dto.form.UserForm;
+import com.simple.scheck.rest.ResultList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -37,10 +39,10 @@ public class UserController {
 
     @ApiOperation(value = "查询所有用户")
     @RequestMapping(value = "findAll", method = RequestMethod.POST)
-    public List<User> findAllUser() {
+    public ResultList<User> findAllUser() {
         logger.info("查询所有用户");
-        List<User> list = service.selectList();
-        return list;
+        PageInfo<User> list = service.selectList();
+        return ResultList.list(list);
     }
 
 }

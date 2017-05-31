@@ -19,3 +19,10 @@ spring:
 # 日志级别
 logging:
   level: info
+pagehelper:
+    helperDialect: mysql
+    # 分页合理化
+    reasonable: true
+    # 是否支持接口参数来传递分页参数，默认false
+    supportMethodsArguments: true
+    params: count=countSql
