@@ -1,5 +1,6 @@
 package com.simple.scheck.dao;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -31,14 +32,15 @@ public abstract class AbstractEntity<ID extends Serializable> implements Seriali
     private String createBy;
 
     @CreatedDate
-    @NotNull
-    private Date createDate = new Date();
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date createDate;
 
     @LastModifiedBy
     private String lastModifiedBy;
 
     @LastModifiedDate
-    private Date lastModifiedDate = new Date();
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    private Date lastModifiedDate;
 
     public String getCreateBy() {
         return createBy;

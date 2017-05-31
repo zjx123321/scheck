@@ -31,4 +31,17 @@ public class UserForm {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", name=").append(name);
+        sb.append(", password=").append(password);
+        sb.append("]");
+        return sb.toString();
+    }
+
 }

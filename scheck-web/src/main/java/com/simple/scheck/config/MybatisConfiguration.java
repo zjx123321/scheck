@@ -20,13 +20,17 @@ import javax.annotation.PreDestroy;
  */
 @Configuration
 @EnableConfigurationProperties({ DataBaseProperties.class })
-@MapperScan(basePackages = { "com.kashuo.backend.dao" })
+@MapperScan(basePackages = { "com.simple.scheck.dao" })
 public class MybatisConfiguration {
     @Autowired
     private DataBaseProperties dataSourceProperties;
 
     private DataSource dataSource;
 
+    /**
+     * 当数据库连接不使用的时候,就把该连接重新放到数据池中,方便下次使用调用
+     * @return
+     */
     @Bean(destroyMethod = "close")
     public DataSource dataSource() {
         DataBaseProperties config = this.dataSourceProperties;
@@ -65,7 +69,7 @@ public class MybatisConfiguration {
         sqlSessionFactoryBean.setDataSource(dataSource());
 
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:com/kashuo/backend/dao/mapper/*Mapper.xml"));
+        sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath:com/simple/scheck/dao/mapper/*.xml"));
         sqlSessionFactoryBean.setConfigLocation(resolver.getResource("classpath:mybatis-config.xml"));
         return sqlSessionFactoryBean.getObject();
     }

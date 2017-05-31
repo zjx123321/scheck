@@ -108,6 +108,22 @@
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <excludes>
+                    <!--<exclude>*.properties</exclude>-->
+                </excludes>
+            </resource>
+            <!--dao xml 配置-->
+            <resource>
+                <directory>${basedir}/src/main/java</directory>
+                <!-- 此处不加会导致xml文件不能被打包到jar包中 -->
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
         <pluginManagement>
             <plugins>
                 <!-- 自动生成dao mapper entity 代码 -->
@@ -120,14 +136,14 @@
                         <verbose>true</verbose>
                         <overwrite>true</overwrite>
                     </configuration>
-                    <executions>
-                        <execution>
-                            <id>Generate MyBatis Artifacts</id>
-                            <goals>
-                                <goal>generate</goal>
-                            </goals>
-                        </execution>
-                    </executions>
+                    <!--<executions>-->
+                        <!--<execution>-->
+                            <!--<id>Generate MyBatis Artifacts</id>-->
+                            <!--<goals>-->
+                                <!--<goal>generate</goal>-->
+                            <!--</goals>-->
+                        <!--</execution>-->
+                    <!--</executions>-->
                 </plugin>
                 <!--
                      用于将应用打成可直接运行的jar（该jar就是用于生产环境中的jar）
