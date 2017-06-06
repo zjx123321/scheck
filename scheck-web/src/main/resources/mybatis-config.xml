@@ -9,7 +9,11 @@
     <!--</properties>-->
     <settings>
 
+        <!-- sql日志打印到控制台 -->
         <setting name="logImpl" value="STDOUT_LOGGING" />
+
+        <!-- sql日志打印到base.log -->
+        <setting name="logPrefix" value="dao."/>
 
         <!-- 这个配置使全局的映射器启用或禁用缓存。系统默认值是true，设置只是为了展示出来 -->
         <setting name="cacheEnabled" value="true" />

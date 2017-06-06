@@ -1,6 +1,7 @@
 package com.simple.scheck.rest;
 
 import com.github.pagehelper.PageInfo;
+import com.simple.scheck.exception.StatusCode;
 
 import java.util.List;
 

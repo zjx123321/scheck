@@ -1,5 +1,7 @@
 package com.simple.scheck.rest;
 
+import com.simple.scheck.exception.StatusCode;
+
 /**
  * Created by dell on 2017/5/31.
  */

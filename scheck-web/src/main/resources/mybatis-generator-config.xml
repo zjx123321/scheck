@@ -72,7 +72,7 @@
         </javaClientGenerator>
 
         <!-- 配置表信息 -->
-        <table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="operation_log" domainObjectName="OperationLog" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
 
     </context>
