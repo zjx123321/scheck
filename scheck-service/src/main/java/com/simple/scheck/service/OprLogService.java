@@ -1,11 +1,8 @@
 package com.simple.scheck.service;
 
-import com.simple.scheck.dao.BaseDao;
 import com.simple.scheck.dao.OperationLogMapper;
 import com.simple.scheck.dto.entity.OperationLog;
-
 import com.simple.scheck.exception.AbstractException;
-import com.simple.scheck.exception.StatusCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
