@@ -2,6 +2,7 @@ package com.simple.scheck.aspect;
 
 import com.alibaba.fastjson.JSON;
 import com.simple.scheck.annoation.OprLog;
+import com.simple.scheck.dto.entity.OperationLog;
 import com.simple.scheck.service.OprLogService;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
