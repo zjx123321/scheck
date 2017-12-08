@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="redisClusterNodes" class="org.springframework.core.env.MapPropertySource">
+        <constructor-arg name="name" value="redis-cluster-config" index="0"/>
+        <constructor-arg name="source" index="1">
+            <props>
+                <prop key="spring.redis.cluster.nodes">192.168.136.56:6379,192.168.136.56:6380,192.168.136.63:6379,192.168.136.63:6380,192.168.136.189:6379,192.168.136.189:6380</prop>
+                <prop key="spring.redis.cluster.max-redirects">5</prop>
+            </props>
+        </constructor-arg>
+    </bean>
+    <bean id="redisClusterConfiguration" class="org.springframework.data.redis.connection.RedisClusterConfiguration">
+        <constructor-arg name="propertySource" ref="redisClusterNodes"></constructor-arg>
+    </bean>
+
+    <bean id="jedisPoolConfig"   class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="8" />
+        <property name="maxIdle" value="5" />
+        <property name="maxWaitMillis" value="1000" />
+        <property name="minIdle" value="0" />
+
+    </bean>
+
+    <bean id="jedisConnFactory"  class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" >
+        <constructor-arg ref="redisClusterConfiguration" />
+        <constructor-arg ref="jedisPoolConfig" />
+    </bean>
+
+    <bean id="redisTemplate"  class="org.springframework.data.redis.core.StringRedisTemplate"  >
+        <property name="connectionFactory" ref="jedisConnFactory" />
+    </bean>
+
+</beans>
